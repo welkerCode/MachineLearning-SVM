@@ -2,7 +2,6 @@ import copy as copy
 
 from Utility import *
 from Dataset import *
-from batchGradientDescent import calcBatchGradient
 def calcStochasticSVM():
 
     '''

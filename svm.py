@@ -121,6 +121,12 @@ if __name__ == "__main__":
     d = .15
     gamma_t_choice = 'a'
 
+    "----Part A's Learning Rate---------"
+
+    weights_a = []
+    final_lr_a = []
+    accuracies_a = []
+
     for C in C_list:
         svmWeight, svmLearningRate = svm(gamma_0, max_t, N, epsilon, C, gamma_t_choice, d)
 
@@ -131,12 +137,15 @@ if __name__ == "__main__":
         print "Weight vector: " + str(svmWeight)
         print "Learning rate: " + str(svmLearningRate)
         print "Accuracy: " + str(accuracy)
+        weights_a.append(svmWeight)
+        final_lr_a.append(svmLearningRate)
+        accuracies_a.append(accuracy)
 
+    weights_b = []
+    final_lr_b = []
+    accuracies_b = []
 
-    print "\n"
-    print "\n"
-    print "\n"
-    print "\n"
+    print "\n \n \n \n----Part B's Learning Rate---------"
     gamma_t_choice = 'b'
 
     for C in C_list:
@@ -149,3 +158,21 @@ if __name__ == "__main__":
         print "Weight vector: " + str(svmWeight)
         print "Learning rate: " + str(svmLearningRate)
         print "Accuracy: " + str(accuracy)
+        weights_b.append(svmWeight)
+        final_lr_b.append(svmLearningRate)
+        accuracies_b.append(accuracy)
+
+    weights_diff = np.subtract(np.array(weights_a), np.array(weights_b))
+    learning_diff = np.subtract(np.array(final_lr_a), np.array(final_lr_b))
+    accuracies_diff = np.subtract(np.array(accuracies_a), np.array(accuracies_b))
+
+    print "\n \n \n \n----Part C: Differences---------"
+    print "Weight Differences: "
+    for pos in xrange(0,len(C_list)):
+        print str(C_list[pos]) + ": " + str(weights_diff[pos])
+    print "\nFinal Learning Rate Differences: "
+    for pos in xrange(0,len(C_list)):
+        print str(C_list[pos]) + ": " + str(learning_diff[pos])
+    print "\nAccuracies Diff: "
+    for pos in xrange(0,len(C_list)):
+        print str(C_list[pos]) + ": " + str(accuracies_diff[pos])
