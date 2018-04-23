@@ -121,7 +121,7 @@ if __name__ == "__main__":
     d = .15
     gamma_t_choice = 'a'
 
-    "----Part A's Learning Rate---------"
+    print "----Part A's Learning Rate---------"
 
     weights_a = []
     final_lr_a = []
